@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize')
+const crypto = require('crypto')
 const { Person, Pdf, Booking, Offense } = require('./models')
 const env = process.env.NODE_ENV || 'development'
 const config = require('./config/config')[env]
@@ -11,7 +12,15 @@ exports.filterLinks = async function (links) {
         postedOn: links.map(({ postedOn }) => postedOn)
       }
     })
-    const existing = new Set(pdfs.map((x) => x.postedOn))
+    /* Sequelize erroneously adds timezone to DATEONLY on retrieval from MSSQL
+    so we need to add a day to make it right */
+    const existing = new Set(pdfs.map((x) => {
+      let date = new Date(x.postedOn)
+      date.setDate(date.getDate() + 1)
+      return date.toISOString().split('T')[0]
+    }))
+    console.log(existing)
+    console.log(new Date().getTimezoneOffset())
     return links.filter(({ postedOn }) => !existing.has(postedOn))
   })
   await sequelize.close()
@@ -31,6 +40,12 @@ exports.save = async function (processed) {
         { transaction }
       )
       await Promise.all(rows.map(async (row) => {
+        const hash = crypto.createHash('sha256')
+        hash.update(`${row.first_name} ${row.last_name} ${row.dob}`)
+        row.hash = hash.digest('base64')
+        if (!("dob" in row)) {
+          row.dob = null
+        }
         const [person] = await Person.upsert(
           row,
           { transaction, returning: true }

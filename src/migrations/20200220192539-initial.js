@@ -10,11 +10,11 @@ module.exports = {
         },
         first_name: {
           allowNull: false,
-          type: Sequelize.TEXT
+          type: Sequelize.STRING
         },
         last_name: {
           allowNull: false,
-          type: Sequelize.TEXT
+          type: Sequelize.STRING
         },
         dob: {
           allowNull: true,
@@ -22,15 +22,15 @@ module.exports = {
         },
         sex: {
           allowNull: false,
-          type: Sequelize.TEXT
+          type: Sequelize.STRING
         },
         race: {
           allowNull: false,
-          type: Sequelize.TEXT
+          type: Sequelize.STRING
         },
         zip: {
           allowNull: true,
-          type: Sequelize.TEXT
+          type: Sequelize.STRING
         },
         transient: {
           allowNull: false,
@@ -86,15 +86,15 @@ module.exports = {
         },
         sex: {
           allowNull: false,
-          type: Sequelize.TEXT
+          type: Sequelize.STRING
         },
         race: {
           allowNull: false,
-          type: Sequelize.TEXT
+          type: Sequelize.STRING
         },
         zip: {
           allowNull: true,
-          type: Sequelize.TEXT
+          type: Sequelize.STRING
         },
         transient: {
           allowNull: false,
@@ -102,15 +102,15 @@ module.exports = {
         },
         inmate_number: {
           allowNull: false,
-          type: Sequelize.TEXT
+          type: Sequelize.STRING
         },
         booking_number: {
           allowNull: false,
-          type: Sequelize.TEXT
+          type: Sequelize.STRING
         },
         booking_type: {
           allowNull: true,
-          type: Sequelize.TEXT
+          type: Sequelize.STRING
         },
         booking_date: {
           allowNull: false,
@@ -142,7 +142,7 @@ module.exports = {
         },
         type: {
           allowNull: false,
-          type: Sequelize.TEXT
+          type: Sequelize.STRING
         },
         bond: {
           allowNull: true,
@@ -150,23 +150,23 @@ module.exports = {
         },
         code: {
           allowNull: false,
-          type: Sequelize.TEXT
+          type: Sequelize.STRING
         },
         dispo: {
           allowNull: true,
-          type: Sequelize.TEXT
+          type: Sequelize.STRING
         },
         charge: {
           allowNull: false,
-          type: Sequelize.TEXT
+          type: Sequelize.STRING
         },
         warrant_number: {
           allowNull: true,
-          type: Sequelize.TEXT
+          type: Sequelize.STRING
         },
         citation_number: {
           allowNull: true,
-          type: Sequelize.TEXT
+          type: Sequelize.STRING
         },
         created_at: {
           allowNull: false,

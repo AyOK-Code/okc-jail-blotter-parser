@@ -2,12 +2,21 @@ version: '3.7'
 
 services:
 
-  postgres:
-    container_name: postgres
-    image: postgres:9.6
+  # postgres:
+  #   container_name: postgres
+  #   image: postgres:9.6
+  #   environment:
+  #     POSTGRES_PASSWORD: "Password123"
+  #     PGUSER: postgres
+  #   command: "-c 'work_mem=16MB' -c 'maintenance_work_mem=128MB'"
+  #   ports:
+  #     - "5432:5432"
+
+  sqlserver:
+    container_name: sqlserver
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
     environment:
-      POSTGRES_PASSWORD: "Password123"
-      PGUSER: postgres
-    command: "-c 'work_mem=16MB' -c 'maintenance_work_mem=128MB'"
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Password@123"
     ports:
-      - "5432:5432"
+      - "1433:1433"

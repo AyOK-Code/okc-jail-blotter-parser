@@ -1,30 +1,35 @@
 module.exports = {
   development: {
-    username: 'postgres',
-    password: 'Password123',
-    database: 'postgres',
-    host: '127.0.0.1',
-    dialect: 'postgres'
+    username: 'sa',
+    password: 'Password@123',
+    database: 'temp',
+    host: '0.0.0.0',
+    dialect: 'mssql',
+    dialectOptions: {
+      dateFirst: 1,
+      useUTC: false
+    }
   },
   localprod: {
-    username: 'prod',
+    username: 'dev',
     password: process.env.PROD_DB_PASSWORD,
-    database: 'prod',
+    database: 'justice_data',
     host: process.env.PROD_DB_HOSTNAME,
-    dialect: 'postgres',
+    dialect: 'mssql',
     dialectOptions: {
-      ssl: {
-        key: process.env.PROD_DB_CLIENT_KEY,
-        cert: process.env.PROD_DB_CLIENT_CERT,
-        ca: process.env.PROD_DB_SERVER_CA
-      }
+      dateFirst: 1,
+      useUTC: true
     }
   },
   production: {
-    username: 'prod',
+    username: 'dev',
     password: process.env.PROD_DB_PASSWORD,
-    database: 'prod',
-    host: process.env.PROD_DB_SOCKET,
-    dialect: 'postgres'
+    database: 'justice_data',
+    host: process.env.PROD_DB_HOSTNAME,
+    dialect: 'mssql',
+    dialectOptions: {
+      dateFirst: 1,
+      useUTC: true
+    }
   }
 }

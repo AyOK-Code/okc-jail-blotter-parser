@@ -4,12 +4,12 @@ module.exports = {
       return Promise.all([
         queryInterface.changeColumn('people', 'race', {
           allowNull: true,
-          type: Sequelize.TEXT
+          type: Sequelize.STRING
         },
         { transaction }),
         queryInterface.changeColumn('bookings', 'race', {
           allowNull: true,
-          type: Sequelize.TEXT
+          type: Sequelize.STRING
         },
         { transaction })
       ])
@@ -19,11 +19,11 @@ module.exports = {
     return Promise.all([
       queryInterface.changeColumn('people', 'race', {
         allowNull: false,
-        type: Sequelize.TEXT
+        type: Sequelize.STRING
       }),
       queryInterface.changeColumn('bookings', 'race', {
         allowNull: false,
-        type: Sequelize.TEXT
+        type: Sequelize.STRING
       })
     ])
   }

@@ -33,6 +33,7 @@ npm test
 Start the server.
 ```sh
 docker-compose up
+docker exec sqlserver /opt/mssql-tools/bin/sqlcmd -U sa -P Password@123 -Q "create database temp"
 AUTH_TOKEN=abc PORT=8080 npm start
 ```
 Run the job.
